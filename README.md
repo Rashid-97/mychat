@@ -1,12 +1,14 @@
 # mychat
 
-users:
-  admin:
-    username: admin
-    password: admin
-  user1:
-    username: user1
-    password: a1b2c3d4@
+* Users:
+  * admin:
+
+        username: admin
+        password: admin
+  * user1
+  
+        username: user1
+        password: a1b2c3d4@
     
     
     
