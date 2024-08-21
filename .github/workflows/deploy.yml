@@ -13,19 +13,23 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
     - name: Install Heroku CLI
       run: curl https://cli-assets.heroku.com/install.sh | sh
 
-    - name: Authenticate to Heroku
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_APP_NAME }}
-      run: heroku auth:token
-
-    - name: Set Heroku git remote
+    - name: Deploy to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku git:remote -a mychat-django
-
-    - name: Push to Heroku
-      run:  |
-       git push https://heroku:HEROKU_APP_NAME@git.heroku.com/mychat-django.git main
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      run: |
+        heroku git:remote -a $HEROKU_APP_NAME
+        git push heroku main --force
