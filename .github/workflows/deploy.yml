@@ -27,4 +27,5 @@ jobs:
       run: heroku git:remote -a mychat-django
 
     - name: Push to Heroku
-      run: git push heroku main
+      run:  |
+       git push https://heroku:$HEROKU_API_KEY@git.heroku.com/mychat-django.git main
