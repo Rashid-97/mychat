@@ -19,9 +19,9 @@ jobs:
     - name: Set up Heroku remote
       run: git remote add heroku https://git.heroku.com/mychat-django.git
 
-    - name: Deploy to Heroku
+    - name: Force push to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         git config --global url."https://heroku:${HEROKU_API_KEY}@git.heroku.com".insteadOf https://git.heroku.com
-        git push heroku main
+        git push heroku main --force
