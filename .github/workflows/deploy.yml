@@ -18,7 +18,7 @@ jobs:
 
     - name: Authenticate to Heroku
       env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_API_KEY: ${{ secrets.HEROKU_APP_NAME }}
       run: heroku auth:token
 
     - name: Set Heroku git remote
@@ -28,4 +28,4 @@ jobs:
 
     - name: Push to Heroku
       run:  |
-       git push https://heroku:$HEROKU_API_KEY@git.heroku.com/mychat-django.git main
+       git push https://heroku:HEROKU_APP_NAME@git.heroku.com/mychat-django.git main
