@@ -5,6 +5,7 @@ async-timeout==3.0.1
 attrs==21.2.0
 autobahn==21.3.1
 Automat==20.2.0
+cffi==1.16.0
 channels==3.0.3
 channels-redis==3.3.0
 constantly==15.1.0
@@ -12,13 +13,19 @@ cryptography==3.4.7
 daphne==3.0.2
 Django==3.2.5
 docx==0.2.4
+gunicorn==23.0.0
+hiredis==2.3.2
 hyperlink==21.0.0
 idna==3.2
 incremental==21.3.0
+lxml==5.2.2
 msgpack==1.0.2
 mysql==0.0.3
 mysql-connector-python==8.0.27
+mysqlclient==2.2.4
+packaging==24.1
 pdfkit==1.0.0
+pillow==10.4.0
 protobuf==3.19.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
@@ -30,6 +37,7 @@ service-identity==21.1.0
 six==1.16.0
 sqlparse==0.4.1
 Twisted==21.2.0
+twisted-iocpsupport==1.0.4
 txaio==21.2.1
 wkhtmltopdf==0.2
 xmltodict==0.12.0
