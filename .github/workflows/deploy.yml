@@ -17,14 +17,10 @@ jobs:
       run: curl https://cli-assets.heroku.com/install.sh | sh
 
     - name: Authenticate to Heroku
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku auth:token
+      run: heroku auth:login --api-key ${{ secrets.HEROKU_API_KEY }}
 
     - name: Set Heroku git remote
       run: heroku git:remote -a mychat-django
 
-    - name: Force push to Heroku
-      run: git push heroku main --force
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    - name: Push to Heroku
+      run: git push heroku main
