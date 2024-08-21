@@ -16,15 +16,12 @@ jobs:
     - name: Install Heroku CLI
       run: curl https://cli-assets.heroku.com/install.sh | sh
 
-    - name: Authenticate to Heroku
+    - name: Set up Heroku remote
+      run: git remote add heroku https://git.heroku.com/your-heroku-app-name.git
+
+    - name: Deploy to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku auth:token
-
-    - name: Set Heroku git remote
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku git:remote -a mychat-django
-
-    - name: Push to Heroku
-      run: git push heroku main
+      run: |
+        git config --global url."https://heroku:${HEROKU_API_KEY}@git.heroku.com".insteadOf https://git.heroku.com
+        git push heroku main
