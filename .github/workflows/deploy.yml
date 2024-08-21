@@ -1,24 +1,20 @@
-name: Deploy to Heroku
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install Heroku CLI
-      run: curl https://cli-assets.heroku.com/install.sh | sh
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
 
-    - name: Deploy to Heroku
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: |
-        heroku git:remote -a mychat-django
-        git push heroku main
+      - name: Authenticate to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: echo $HEROKU_API_KEY | heroku auth:token
+
+      - name: Set Heroku git remote
+        run: heroku git:remote -a mychat-django
+
+      - name: Deploy to Heroku
+        run: git push heroku main
