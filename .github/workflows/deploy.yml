@@ -17,7 +17,7 @@ jobs:
       run: curl https://cli-assets.heroku.com/install.sh | sh
 
     - name: Set up Heroku remote
-      run: git remote add heroku https://git.heroku.com/your-heroku-app-name.git
+      run: git remote add heroku https://git.heroku.com/mychat-django.git
 
     - name: Deploy to Heroku
       env:
